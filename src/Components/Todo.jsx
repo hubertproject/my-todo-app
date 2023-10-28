@@ -2,49 +2,40 @@
 import React, { useState } from "react";
 
 const Todo = () => {
-  // State to manage the list of todos, the new todo input, and the currently edited todo
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
   const [editIndex, setEditIndex] = useState(null);
 
-  // Function to add a new todo
   const addTodo = () => {
-    // Check if the input is not empty
+    //  checking if is empty or not
     if (newTodo.trim() !== "") {
-      // Add the new todo to the list and reset the input
+      // Adding the new todo to the list and reset the input
       setTodos([...todos, newTodo]);
       setNewTodo("");
     }
   };
 
-  // Function to edit a todo
   const editTodo = (index) => {
-    // Set the editIndex to the index of the todo to be edited
     setEditIndex(index);
-    // Set the input field with the todo text for editing
+
     setNewTodo(todos[index]);
   };
 
-  // Function to save the edited todo
   const saveEdit = () => {
-    // Check if the input is not empty
     if (newTodo.trim() !== "") {
-      // Copy the existing todos array
       const updatedTodos = [...todos];
-      // Update the todo at the editIndex
+
       updatedTodos[editIndex] = newTodo;
-      // Set the updated todos and reset the input and editIndex
+
       setTodos(updatedTodos);
       setNewTodo("");
       setEditIndex(null);
     }
   };
 
-  // Function to delete a todo
   const deleteTodo = (index) => {
-    // Filter out the todo to be deleted
     const updatedTodos = todos.filter((_, i) => i !== index);
-    // Set the updated todos
+
     setTodos(updatedTodos);
   };
 
@@ -106,5 +97,14 @@ const Todo = () => {
     </div>
   );
 };
+<div>
+  <h3
+    style={{
+      color: "red",
+    }}
+  >
+    To Do List
+  </h3>
+</div>;
 
 export default Todo;
